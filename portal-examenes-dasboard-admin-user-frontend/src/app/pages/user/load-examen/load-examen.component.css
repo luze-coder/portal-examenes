@@ -1,0 +1,14 @@
+﻿.example-header-image {
+  background-image: url('/assets/exam.png');
+  background-size: cover;
+}
+
+.estado-aprobado {
+  color: #2e7d32;
+  font-weight: 700;
+}
+
+.estado-desaprobado {
+  color: #c62828;
+  font-weight: 700;
+}

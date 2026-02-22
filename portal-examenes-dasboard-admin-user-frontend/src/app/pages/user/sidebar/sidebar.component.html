@@ -1,0 +1,29 @@
+﻿<mat-card>
+  <mat-action-list>
+    <div mat-subheader>Materias disponibles</div>
+
+    <button mat-list-item [routerLink]="['/user-dashboard', 0]">
+      <mat-icon mat-list-icon>quiz</mat-icon>
+      Exámenes
+    </button>
+
+    <button mat-list-item [routerLink]="['/user-dashboard/notas']">
+      <mat-icon mat-list-icon>grade</mat-icon>
+      Ver notas
+    </button>
+
+    <mat-divider></mat-divider>
+
+    <div *ngIf="cargando" class="p-2">Cargando materias...</div>
+
+    <button mat-list-item *ngFor="let c of categorias; trackBy: trackById"
+      [routerLink]="['/user-dashboard', c.categoriaId]">
+      <mat-icon mat-list-icon>materia</mat-icon>
+      {{ c.titulo }}
+    </button>
+
+    <div *ngIf="!cargando && categorias.length === 0" class="p-2">
+      No hay materias disponibles.
+    </div>
+  </mat-action-list>
+</mat-card>

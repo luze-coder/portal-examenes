@@ -1,0 +1,40 @@
+﻿<div class="bootstrap-wrapper">
+  <div class="container-fluid">
+    <h1>Ver notas</h1>
+
+    <mat-card *ngIf="cargando" class="mt20">
+      <mat-card-content>Cargando notas...</mat-card-content>
+    </mat-card>
+
+    <div class="row mt20" *ngIf="!cargando">
+      <div class="col-md-6" *ngFor="let n of notas">
+        <mat-card class="mb20">
+          <mat-card-header>
+            <mat-card-title>{{ n.examen?.titulo }}</mat-card-title>
+            <mat-card-subtitle>{{ n.examen?.categoria?.titulo }}</mat-card-subtitle>
+          </mat-card-header>
+
+          <mat-card-content>
+            <p><b>Nota:</b> {{ n.notaObtenida }}</p>
+            <p>
+              <b>Estado:</b>
+              <span [ngClass]="estaAprobado(n) ? 'estado-aprobado' : 'estado-desaprobado'">
+                {{ getEstadoResultado(n) }}
+              </span>
+            </p>
+            <p><b>Puntos mínimos para aprobar:</b> {{ n.examen?.puntosAprobacion }}</p>
+            <p><b>Fecha:</b> {{ n.fechaRealizacion | date:'dd/MM/yyyy HH:mm' }}</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div class="col-md-12" *ngIf="notas.length === 0">
+        <mat-card>
+          <mat-card-content>
+            <h2>Aún no tenés exámenes realizados.</h2>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

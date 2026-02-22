@@ -1,0 +1,49 @@
+<div class="bootstrap-wrapper">
+    <div class="container mt20">
+
+        <h1 class="mb-4">Solicitudes pendientes</h1>
+
+        <mat-card>
+            <mat-card-title class="mb-3">Solicitudes pendientes</mat-card-title>
+
+            <!-- Lista de solicitudes -->
+            <div *ngIf="solicitudes.length > 0" class="solicitudes-container">
+
+                <mat-card class="solicitud-card" *ngFor="let s of solicitudes">
+                    <div class="row align-items-center">
+
+                        <!-- Info del alumno -->
+                        <div class="col-md-8">
+                            <strong class="nombre">{{ s.alumno?.nombre }} {{ s.alumno?.apellido }}</strong>
+                            <p class="username">{{ s.alumno?.username }}</p>
+
+                            <p *ngIf="s.examen" class="examen">
+                                <em>Examen: {{ s.examen?.titulo }}</em>
+                            </p>
+                        </div>
+
+                        <!-- Botones -->
+                        <div class="col-md-4 text-end botones">
+                            <button mat-raised-button color="primary" (click)="aceptar(s.id)" class="me-2">
+                                Aceptar
+                            </button>
+
+                            <button mat-raised-button color="warn" (click)="rechazar(s.id)">
+                                Rechazar
+                            </button>
+                        </div>
+
+                    </div>
+                </mat-card>
+
+            </div>
+
+            <!-- Sin solicitudes -->
+            <div *ngIf="solicitudes.length === 0" class="text-center py-4">
+                <p>No hay solicitudes pendientes.</p>
+            </div>
+
+        </mat-card>
+
+    </div>
+</div>

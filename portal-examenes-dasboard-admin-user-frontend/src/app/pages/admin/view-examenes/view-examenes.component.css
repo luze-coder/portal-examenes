@@ -1,0 +1,21 @@
+.example-header-image {
+  background-image: url('../../../../assets/test.png');
+  background-size: cover;
+}
+
+.acciones-examen {
+  display: flex;
+  flex-wrap: nowrap;
+  /* 👈 evita que los botones salten a otra línea */
+  align-items: center;
+  gap: 12px;
+  /* separa en lugar de usar tantas ml20 */
+  overflow-x: auto;
+  /* 👈 si hay muchos botones, aparece scroll horizontal en vez de romper */
+  padding: 8px 0;
+}
+
+.ml20 {
+  margin-left: 0;
+  /* ya no hace falta, pero lo dejo neutralizado por si lo usás en otro lado */
+}

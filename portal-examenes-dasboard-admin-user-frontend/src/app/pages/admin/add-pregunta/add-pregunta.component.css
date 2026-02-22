@@ -1,0 +1,34 @@
+﻿.w100{
+  width: 100%;
+}
+
+.option-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.option-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.option-field {
+  flex: 1;
+}
+
+.remove-btn {
+  margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+  .option-row {
+    flex-direction: column;
+  }
+
+  .remove-btn {
+    margin-top: 0;
+    width: fit-content;
+  }
+}

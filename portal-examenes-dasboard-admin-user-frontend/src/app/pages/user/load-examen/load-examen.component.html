@@ -1,0 +1,76 @@
+﻿<div class="bootstrap-wrapper">
+  <div class="container-fluid">
+    <h1>Exámenes disponibles</h1>
+
+    <div class="row mt20" *ngIf="examenes">
+
+      <div class="col-md-6" *ngFor="let e of examenes">
+        <mat-card class="mb20">
+
+          <mat-card-header>
+            <mat-card-title>{{ e.titulo }}</mat-card-title>
+            <mat-card-subtitle>{{ e.categoria?.titulo }}</mat-card-subtitle>
+          </mat-card-header>
+
+          <mat-card-content>
+            <p>{{ e.descripcion }}</p>
+            <p>Estado: {{ getNombreEstado(e.tipoHabilitacion) }}</p>
+
+            <p *ngIf="yaRealizado(e.examenId)">
+              Ya realizado. Nota: {{ obtenerNota(e.examenId) }} -
+              <span [ngClass]="estaAprobado(e.examenId, e.puntosAprobacion) ? 'estado-aprobado' : 'estado-desaprobado'">
+                {{ getEstadoResultado(e.examenId, e.puntosAprobacion) }}
+              </span>
+            </p>
+          </mat-card-content>
+
+          <mat-card-actions>
+
+            <button *ngIf="e.tipoHabilitacion === 1 && !yaRealizado(e.examenId)" mat-button color="accent"
+              [routerLink]="'/user-dashboard/instrucciones/' + e.examenId">
+              Empezar
+            </button>
+
+            <ng-container *ngIf="e.tipoHabilitacion === 2">
+
+              <button *ngIf="habilitados[e.examenId]?.puedeEnviar && !yaRealizado(e.examenId)" mat-button color="warn"
+                (click)="solicitarAcceso(e.examenId)">
+                Enviar solicitud
+              </button>
+
+              <span *ngIf="habilitados[e.examenId]?.pendiente">
+                Solicitud pendiente
+              </span>
+
+              <button *ngIf="habilitados[e.examenId]?.habilitado && !yaRealizado(e.examenId)" mat-button color="accent"
+                [routerLink]="'/user-dashboard/instrucciones/' + e.examenId">
+                Empezar (habilitado)
+              </button>
+
+              <span *ngIf="habilitados[e.examenId]?.rechazada" style="color: red;">
+                Solicitud rechazada
+              </span>
+
+            </ng-container>
+
+            <button mat-button>Preguntas {{ e.numeroDePreguntas }}</button>
+            <button mat-button>Puntos Máximos {{ e.puntosMaximos }}</button>
+            <button mat-button>Puntos para aprobar {{ e.puntosAprobacion }}</button>
+            <button mat-button>Tiempo {{ (e.tiempoMaximoMinutos && e.tiempoMaximoMinutos > 0) ? e.tiempoMaximoMinutos : (e.numeroDePreguntas * 2) }} min</button>
+
+          </mat-card-actions>
+
+        </mat-card>
+      </div>
+
+      <div class="col-md-12" *ngIf="examenes.length === 0">
+        <mat-card>
+          <mat-card-content>
+            <h1>No hay exámenes en esta materia</h1>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+    </div>
+  </div>
+</div>

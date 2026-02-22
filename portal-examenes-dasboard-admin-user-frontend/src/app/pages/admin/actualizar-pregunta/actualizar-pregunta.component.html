@@ -1,0 +1,62 @@
+﻿<div class="bootstrap-wrapper">
+  <div class="row mt20">
+    <div class="col-md-12">
+      <h1 *ngIf="pregunta">Actualizar preguntas a <span style="font-weight: bold;">{{ pregunta.examen.titulo }}</span></h1>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-subtitle>
+            Digite los detalles de la pregunta
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <form class="mt20" *ngIf="pregunta" (ngSubmit)="actualizarDatosDeLaPregunta()">
+            <mat-form-field class="w100">
+              <mat-label>Digite el contenido de la pregunta</mat-label>
+              <textarea rows="8" matInput placeholder="Escribe aquí" name="contenido" [(ngModel)]="pregunta.contenido"></textarea>
+            </mat-form-field>
+
+            <div class="option-list">
+              <div class="option-row" *ngFor="let op of pregunta.opciones; let i = index; trackBy: trackByIndex">
+                <mat-form-field class="option-field">
+                  <mat-label>Opción {{ i + 1 }}</mat-label>
+                  <input
+                    type="text"
+                    matInput
+                    [name]="'opcion_' + i"
+                    [(ngModel)]="pregunta.opciones[i]">
+                </mat-form-field>
+
+                <button
+                  *ngIf="i >= 2"
+                  mat-stroked-button
+                  color="warn"
+                  type="button"
+                  class="remove-btn"
+                  (click)="eliminarOpcion(i)">
+                  Quitar opción
+                </button>
+              </div>
+            </div>
+
+            <div class="mb20">
+              <button mat-raised-button color="accent" type="button" (click)="agregarOpcion()">
+                Agregar opción
+              </button>
+            </div>
+
+            <mat-form-field class="w100">
+              <mat-label>Seleccione la respuesta</mat-label>
+              <mat-select [(ngModel)]="pregunta.respuesta" name="respuesta">
+                <mat-option *ngFor="let op of obtenerOpcionesValidas()" [value]="op">{{ op }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <div class="container text-center">
+              <button mat-raised-button color="primary">Actualizar</button>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

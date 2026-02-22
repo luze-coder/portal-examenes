@@ -1,0 +1,69 @@
+﻿<div class="bootstrap-wrapper" *ngIf="!esEnviado">
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-md-7">
+        <ng-container *ngIf="preguntas">
+          <h1 class="mt20">
+            En curso <b>{{ preguntas[0].examen.titulo }}</b>
+          </h1>
+        </ng-container>
+
+        <mat-card *ngFor="let p of preguntas;let i = index">
+          <mat-card-content>
+            <p><b>{{ i+1 }}) </b> <span [innerHTML]="p.contenido"></span></p>
+            <mat-divider></mat-divider>
+            <div class="row mt20">
+              <div class="col-md-8 mt10" *ngFor="let opcion of obtenerOpciones(p)">
+                <input [(ngModel)]="p.respuestaDada" type="radio" [value]="opcion" [name]="'pregunta_' + i"> {{ opcion }}
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <div class="container text-center mt20 mb20">
+          <button (click)="enviarCuestionario()" mat-raised-button color="primary">Enviar cuestionario</button>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <mat-card style="margin-top:70px;">
+          <mat-card-header>
+            <mat-card-title>
+              Temporizador
+            </mat-card-title>
+            <mat-card-subtitle>
+              El cuestionario se enviará automáticamente cuando el temporizador llegue 0:0
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <h1 class="text-center">{{ obtenerHoraFormateada() }}</h1>
+            <mat-spinner mode="determinate" style="margin: auto;"
+              [value]="(timer/(this.preguntas?.length * 2 * 60)*100)"></mat-spinner>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bootstrap-wrapper" *ngIf="esEnviado">
+  <div class="container mt20">
+    <div class="col-md-6 offset-md-3">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            Resultado de la prueba
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="text-center">
+          <h1>Puntos conseguidos : {{ puntosConseguidos }}</h1>
+          <h1>Respuestas correctas : {{ respuestasCorrectas }}</h1>
+        </mat-card-content>
+        <mat-card-actions class="text-center">
+          <button (click)="imprimirPagina()" mat-raised-button color="primary">Imprimir</button>
+          <button mat-raised-button color="accent" [routerLink]="'/user-dashboard/0'">Inicio</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

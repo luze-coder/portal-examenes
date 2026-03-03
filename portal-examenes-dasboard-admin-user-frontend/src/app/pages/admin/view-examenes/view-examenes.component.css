@@ -1,21 +1,31 @@
-.example-header-image {
-  background-image: url('../../../../assets/test.png');
-  background-size: cover;
+.examen-card {
+  padding: 15px;
+}
+
+.info-examen {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.info-item {
+  background-color: #f5f5f5;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 14px;
 }
 
 .acciones-examen {
   display: flex;
-  flex-wrap: nowrap;
-  /* 👈 evita que los botones salten a otra línea */
-  align-items: center;
+  flex-wrap: wrap;
   gap: 12px;
-  /* separa en lugar de usar tantas ml20 */
-  overflow-x: auto;
-  /* 👈 si hay muchos botones, aparece scroll horizontal en vez de romper */
-  padding: 8px 0;
 }
 
-.ml20 {
-  margin-left: 0;
-  /* ya no hace falta, pero lo dejo neutralizado por si lo usás en otro lado */
+.mt15 {
+  margin-top: 15px;
+}
+
+.mt30 {
+  margin-top: 30px;
 }

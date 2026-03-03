@@ -24,8 +24,8 @@
           <div class="col-md-6">
             <mat-form-field class="w100" appearance="fill">
               <mat-label>Número de preguntas</mat-label>
-              <input [(ngModel)]="examen.numeroDePreguntas" type="text" name="numeroDePreguntas"
-                placeholder="Digite el número de preguntas" matInput>
+              <input [(ngModel)]="examen.numeroDePreguntas" type="text" [min]="numeroDePreguntasOriginal"
+                name="numeroDePreguntas" placeholder="Digite el número de preguntas" matInput>
             </mat-form-field>
           </div>
           <div class="col-md-6">

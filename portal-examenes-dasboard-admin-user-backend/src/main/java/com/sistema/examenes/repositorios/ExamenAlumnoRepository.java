@@ -1,4 +1,4 @@
-﻿package com.sistema.examenes.repositorios;
+package com.sistema.examenes.repositorios;
 
 import java.util.List;
 import java.util.Optional;

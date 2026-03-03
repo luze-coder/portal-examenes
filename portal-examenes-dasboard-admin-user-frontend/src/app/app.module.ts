@@ -44,6 +44,7 @@ import { StartComponent } from './pages/user/start/start.component';
 import { NgxUiLoaderModule, NgxUiLoaderHttpModule } from 'ngx-ui-loader';
 import { ViewSolicitudesComponent } from './pages/admin/view-solicitudes/view-solicitudes.component';
 import { VerNotasComponent } from './pages/user/ver-notas/ver-notas.component';
+import { ViewNotasComponent } from './pages/admin/view-notas/view-notas.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { VerNotasComponent } from './pages/user/ver-notas/ver-notas.component';
     InstruccionesComponent,
     StartComponent,
     ViewSolicitudesComponent,
-    VerNotasComponent
+    VerNotasComponent,
+    ViewNotasComponent
   ],
   imports: [
     BrowserModule,

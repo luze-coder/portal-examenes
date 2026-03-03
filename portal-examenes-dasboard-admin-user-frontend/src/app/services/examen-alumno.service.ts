@@ -24,4 +24,8 @@ export class ExamenAlumnoService {
   obtenerEstadoAlumnoExamen(alumnoId: number, examenId: number) {
     return this.http.get(`${baseUrl}/api/examen-alumno/estado/${alumnoId}/${examenId}`);
   }
+
+  listarNotasPorExamen(examenId: number) {
+    return this.http.get(`${baseUrl}/api/examen-alumno/examen/${examenId}`);
+  }
 }

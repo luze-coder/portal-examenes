@@ -1,4 +1,4 @@
-﻿package com.sistema.examenes.servicios.impl;
+package com.sistema.examenes.servicios.impl;
 
 import com.sistema.examenes.modelo.Categoria;
 import com.sistema.examenes.modelo.Examen;

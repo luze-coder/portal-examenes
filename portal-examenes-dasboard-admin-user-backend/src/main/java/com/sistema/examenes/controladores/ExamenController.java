@@ -1,4 +1,4 @@
-﻿package com.sistema.examenes.controladores;
+package com.sistema.examenes.controladores;
 
 import com.sistema.examenes.modelo.Categoria;
 import com.sistema.examenes.modelo.Examen;

@@ -1,4 +1,4 @@
-﻿package com.sistema.examenes.controladores;
+package com.sistema.examenes.controladores;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;

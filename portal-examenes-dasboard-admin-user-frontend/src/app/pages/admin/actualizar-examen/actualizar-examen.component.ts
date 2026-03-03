@@ -33,10 +33,12 @@ export class ActualizarExamenComponent implements OnInit {
     },
     usuario: {
       id: ''
-    }
+    },
   };
 
   categorias: any = [];
+
+  numeroDePreguntasOriginal: number = 0;
 
 
   constructor(
@@ -51,12 +53,15 @@ export class ActualizarExamenComponent implements OnInit {
 
     this.examenId = this.route.snapshot.params['examenId'];
 
+
     this.examenService.obtenerExamen(this.examenId).subscribe(
       (data: any) => {
         this.examen = {
           ...data,
           tiempoMaximoMinutos: data?.tiempoMaximoMinutos ?? 0
         };
+
+        this.numeroDePreguntasOriginal = Number(data.numeroDePreguntas);
 
         const user = this.loginService.getUser();
 
@@ -88,6 +93,18 @@ export class ActualizarExamenComponent implements OnInit {
 
     if (this.examen.tiempoMaximoMinutos == null || this.examen.tiempoMaximoMinutos < 0) {
       Swal.fire('Atención', 'El tiempo máximo debe ser 0 o mayor', 'warning');
+      return;
+    }
+
+    const numeroActual = Number(this.examen.numeroDePreguntas);
+
+    // ✅ Validación nueva
+    if (numeroActual < this.numeroDePreguntasOriginal) {
+      Swal.fire(
+        'No permitido',
+        `No puedes reducir el número de preguntas. Actualmente el examen tiene ${this.numeroDePreguntasOriginal} preguntas.`,
+        'warning'
+      );
       return;
     }
 

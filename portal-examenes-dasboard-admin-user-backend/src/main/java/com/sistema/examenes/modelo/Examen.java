@@ -1,4 +1,4 @@
-﻿package com.sistema.examenes.modelo;
+package com.sistema.examenes.modelo;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

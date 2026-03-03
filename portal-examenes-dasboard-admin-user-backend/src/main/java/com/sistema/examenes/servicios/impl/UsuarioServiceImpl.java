@@ -1,4 +1,4 @@
-﻿package com.sistema.examenes.servicios.impl;
+package com.sistema.examenes.servicios.impl;
 
 import com.sistema.examenes.excepciones.UsuarioFoundException;
 import com.sistema.examenes.modelo.Usuario;

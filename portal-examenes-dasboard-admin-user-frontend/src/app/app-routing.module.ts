@@ -22,6 +22,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ActualizarExamenComponent } from './pages/admin/actualizar-examen/actualizar-examen.component';
 import { ViewSolicitudesComponent } from './pages/admin/view-solicitudes/view-solicitudes.component';
 import { VerNotasComponent } from './pages/user/ver-notas/ver-notas.component';
+import { ViewNotasComponent } from './pages/admin/view-notas/view-notas.component';
 
 const routes: Routes = [
   {
@@ -87,6 +88,10 @@ const routes: Routes = [
       {
         path: 'solicitudes',
         component: ViewSolicitudesComponent
+      },
+      {
+        path: 'notas',
+        component: ViewNotasComponent
       }
     ]
   },

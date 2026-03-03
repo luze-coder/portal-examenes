@@ -58,8 +58,8 @@ export class AddCategoriaComponent implements OnInit {
         }
 
         Swal.fire(
-          'Categoría agregada',
-          'La categoría ha sido agregada con éxito',
+          'Materia agregada',
+          'La materia ha sido agregada con éxito',
           'success'
         );
 
@@ -67,7 +67,7 @@ export class AddCategoriaComponent implements OnInit {
       },
       (error) => {
         console.log(error);
-        Swal.fire('Error !!', 'Error al guardar la categoría', 'error');
+        Swal.fire('Error !!', 'Error al guardar la materia', 'error');
       }
     )
   }

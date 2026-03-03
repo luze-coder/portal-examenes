@@ -1,0 +1,13 @@
+.nota-card {
+    padding: 15px;
+}
+
+.aprobado {
+    color: green;
+    font-weight: bold;
+}
+
+.desaprobado {
+    color: red;
+    font-weight: bold;
+}

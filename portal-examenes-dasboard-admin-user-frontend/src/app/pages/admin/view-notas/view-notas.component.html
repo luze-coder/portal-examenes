@@ -1,0 +1,40 @@
+<mat-card class="mt20">
+
+    <h1>Notas de mis exámenes</h1>
+
+    <div *ngIf="cargando" class="text-center mt20">
+        <mat-spinner></mat-spinner>
+    </div>
+
+    <div *ngIf="!cargando && notas.length === 0" class="text-center mt20">
+        No hay notas registradas todavía.
+    </div>
+
+    <div *ngFor="let n of notas" class="mt15">
+
+        <mat-card class="nota-card">
+
+            <mat-card-title>
+                {{ n.examen?.titulo }}
+            </mat-card-title>
+
+            <mat-card-content>
+
+                <p><strong>Alumno:</strong> {{ n.usuario?.username }}</p>
+                <p><strong>Nota obtenida:</strong> {{ n.notaObtenida }}</p>
+                <p><strong>Puntaje mínimo:</strong> {{ n.examen?.puntosAprobacion }}</p>
+
+                <p>
+                    <strong>Resultado:</strong>
+                    <span [ngClass]="estaAprobado(n) ? 'aprobado' : 'desaprobado'">
+                        {{ getEstadoResultado(n) }}
+                    </span>
+                </p>
+
+            </mat-card-content>
+
+        </mat-card>
+
+    </div>
+
+</mat-card>
